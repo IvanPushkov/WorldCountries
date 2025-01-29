@@ -15,7 +15,6 @@ struct CountryView: View {
         
         ScrollView {
             VStack(alignment: .leading) {
-                
                 HStack {
                     Text(countryModell.name)
                         .font(.system(.largeTitle, design: .rounded))
@@ -23,42 +22,22 @@ struct CountryView: View {
                     Spacer()
                     ZStack{
                         Circle()
+                            .stroke()
                             .frame(width: 60, height: 60)
-                            .foregroundColor(Color.primary)
+                            .foregroundColor(Color("MainBg"))
                         Image(systemName: "heart.fill")
-                            .font(.system(size: 30))
+                            .font(.system(size: 40))
                             .scaleEffect(countryModell.isFavorits ? 1.2 : 1.0)
-                            .foregroundColor(countryModell.isFavorits ? .red : .gray)
+                            .foregroundColor(countryModell.isFavorits ?  Color("OnButton"): Color("OfButton") )
                             .animation(.default, value: countryModell.isFavorits)
                     }
+                    .offset(y: -10)
                     .onTapGesture {
                         complection(countryModell)
                         countryModell.isFavorits.toggle()
                     }
                 }
-                HStack{
-                    VStack{
-                        Text(countryModell.capital ?? "No Capital")
-                            .font(.system(size: 20))
-                            .padding(.bottom, verticalPadding)
-                        Text(countryModell.population)
-                            .font(.system(size: 20))
-                            .padding(.bottom, verticalPadding)
-                        Text(countryModell.area)
-                            .font(.system(size: 20))
-                            .padding(.bottom, verticalPadding)
-                        Text(countryModell.currency)
-                            .font(.system(size: 15))
-                            .padding(.bottom, verticalPadding)
-                        Text((countryModell.languages?.first)!)
-                            .font(.system(size: 20))
-                        Text(countryModell.timezones)
-                            .font(.system(size: 20))
-                            .padding(.bottom, verticalPadding)
-                    }
-                    Text(countryModell.flag)
-                        .font(.system(size: 150))
-                }
+                MainCountryInformationView(countryModell: countryModell)
                 if let latitude = countryModell.coordinates?.first, let longitude = countryModell.coordinates?.last  {
                     MapView(latitude: latitude, longitude: longitude)
                 }
@@ -69,4 +48,37 @@ struct CountryView: View {
     
 }
 
+
+
+struct MainCountryInformationView: View {
+    let countryModell: CountryCellModel
+    let verticalPadding: CGFloat = 10
+    var body: some View {
+        HStack{
+            VStack(alignment: .leading){
+                Text(countryModell.capital ?? "No Capital")
+                    .font(.system(size: 20))
+                    .padding(.bottom, verticalPadding)
+                Text(countryModell.population)
+                    .font(.system(size: 20))
+                    .padding(.bottom, verticalPadding)
+                Text(countryModell.area)
+                    .font(.system(size: 20))
+                    .padding(.bottom, verticalPadding)
+                Text(countryModell.currency)
+                    .font(.system(size: 15))
+                    .padding(.bottom, verticalPadding)
+                Text((countryModell.languages?.first)!)
+                    .font(.system(size: 20))
+                Text(countryModell.timezones)
+                    .font(.system(size: 20))
+                    .padding(.bottom, verticalPadding)
+            }
+            Text(countryModell.flag)
+                .font(.system(size: 150))
+                .offset(x: 20)
+            Spacer()
+        }
+    }
+}
 

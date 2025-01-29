@@ -30,6 +30,10 @@ class CountryListViewModel: CountryListViewModelProtocol{
                 }
                 markFavorit()
                 cellModels = allCellModels
+                allCellModels.forEach { print($0.capital ?? "") }
+                allCellModels.forEach { print($0.currency) }
+                allCellModels.forEach { print($0.languages ?? "") }
+                allCellModels.forEach { print($0.region) }
                 isLoading = false
             } else {
                 showingAlert = true
@@ -55,13 +59,13 @@ class CountryListViewModel: CountryListViewModelProtocol{
         }
     }
     
-    func changeisFavoritIn(_ country: CountryCellModel){
+    func changeIsFavoritIn(_ country: CountryCellModel){
         if let index = allCellModels.firstIndex(where: { $0.name == country.name }) {
                     allCellModels[index].isFavorits.toggle()
                 }
         country.isFavorits ? coreDataManager.saveNewCountry(country: country) : coreDataManager.deleteCountry(country: country)
     }
-    func returnFavoritCountries(){
+    func returnFavoriteCountries(){
         var favorits = [CountryCellModel]()
         for cellModel in allCellModels{
             if cellModel.isFavorits{
@@ -70,7 +74,7 @@ class CountryListViewModel: CountryListViewModelProtocol{
         }
         cellModels = favorits
     }
-    func returnAllCuntries(){
+    func returnAllCountries(){
         cellModels = allCellModels
     }
     

@@ -4,7 +4,7 @@ import SwiftUI
 
 struct CountryCell: View{
     @Binding var countryCellModel: CountryCellModel
-    var complection: (CountryCellModel)-> ()
+    var completion: (CountryCellModel)-> ()
     
     var body: some View{
         HStack {
@@ -17,22 +17,17 @@ struct CountryCell: View{
                     .font(.system(size: 20, design: .rounded))
                 Text(countryCellModel.region)
                     .font(.system(size: 15, design: .rounded))
-                    .foregroundColor(Color.gray)
+                    .foregroundColor(Color("GrayText"))
             }
             Spacer()
-            ZStack {
-                Circle()
-                    .frame(width: 60, height: 60)
-                    .foregroundColor(Color.primary)
                 Image(systemName: "heart.fill")
                     .font(.system(size: 30))
                     .scaleEffect(countryCellModel.isFavorits ? 1.2 : 1.0)
-                    .foregroundColor(countryCellModel.isFavorits ? .red : .gray)
-            }
+                    .foregroundColor(countryCellModel.isFavorits ? Color("OnButton") : Color("OfButton"))
             .onTapGesture {
                 withAnimation(.spring()) {
                     countryCellModel.toggleIsFavorits()
-                    complection(self.countryCellModel)
+                    completion(self.countryCellModel)
                 }
             }
         }

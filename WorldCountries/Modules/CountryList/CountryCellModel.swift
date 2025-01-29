@@ -20,18 +20,18 @@ struct CountryCellModel{
     
     init(country: Country) {
         self.country = country
-        name = country.name.common
+        name = country.name.common.localized
         flag = country.flag
         region = country.region
         
         capital = country.capital?.first
-        population = "\(country.population) people"
-        area = "Area is \(country.area) km²"
+        population = "population_format".localized("\(country.population)")
+        area = "area_format".localized("\(country.area)")
         languages = country.languages?.values.sorted()
-        timezones = country.timezones?.joined(separator: ", ") ?? "Unknown Timezones"
+        timezones = country.timezones?.joined(separator: ", ") ?? "timezones_unknown".localized
         coordinates = country.latlng
         isFavorits = false
-        self.currency = "Unknown Currency"
+        currency = "currency_unknown".localized
         setCurrency(country.currencies)
     }
     
@@ -39,7 +39,7 @@ struct CountryCellModel{
         if let currencies = currencies, !currencies.isEmpty {
             var currencyList: [String] = []
             for currency in currencies.values {
-                let currencyString = "Currency - \(currency.name), \(currency.symbol )"
+                let currencyString = "currency_format".localized(currency.name, currency.symbol)
                 currencyList.append(currencyString)
             }
             self.currency = currencyList.joined(separator: ", ")

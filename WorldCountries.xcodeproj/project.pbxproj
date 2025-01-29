@@ -13,6 +13,9 @@
 		D70902A62D4A6F860072B8A0 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70902A52D4A6F860072B8A0 /* PersistenceController.swift */; };
 		D70902A82D4A70AE0072B8A0 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70902A72D4A70AE0072B8A0 /* CoreDataManager.swift */; };
 		D70902B62D4A822F0072B8A0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D70902B52D4A822F0072B8A0 /* Preview Assets.xcassets */; };
+		D70902B82D4A86F10072B8A0 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70902B72D4A86F10072B8A0 /* SearchTextField.swift */; };
+		D70902BB2D4ABE830072B8A0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D70902BD2D4ABE830072B8A0 /* Localizable.strings */; };
+		D70902C22D4AC59D0072B8A0 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70902C12D4AC59D0072B8A0 /* SwiftUIView.swift */; };
 		D747795D2D48CD3B00132386 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D747795C2D48CD3B00132386 /* Assets.xcassets */; };
 		D747796B2D48D05500132386 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = D747796A2D48D05500132386 /* App.swift */; };
 		D74779722D48D1E500132386 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74779712D48D1E500132386 /* APIManager.swift */; };
@@ -24,6 +27,7 @@
 		D747797F2D48EDF300132386 /* CustomLoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D747797E2D48EDF300132386 /* CustomLoadView.swift */; };
 		D74779822D4906FD00132386 /* CountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74779812D4906FD00132386 /* CountryView.swift */; };
 		D74779882D4A3CFF00132386 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D74779862D4A3CFF00132386 /* CoreDataModel.xcdatamodeld */; };
+		D779D05B2D4ACB3000B83480 /* String-ExtensionLocolize.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779D05A2D4ACB3000B83480 /* String-ExtensionLocolize.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +37,10 @@
 		D70902A52D4A6F860072B8A0 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		D70902A72D4A70AE0072B8A0 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		D70902B52D4A822F0072B8A0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D70902B72D4A86F10072B8A0 /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
+		D70902BC2D4ABE830072B8A0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D70902BE2D4ABEE10072B8A0 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D70902C12D4AC59D0072B8A0 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		D74779552D48CD3800132386 /* WorldCountries.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorldCountries.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D747795C2D48CD3B00132386 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D747796A2D48D05500132386 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
@@ -45,6 +53,7 @@
 		D747797E2D48EDF300132386 /* CustomLoadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoadView.swift; sourceTree = "<group>"; };
 		D74779812D4906FD00132386 /* CountryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryView.swift; sourceTree = "<group>"; };
 		D74779872D4A3CFF00132386 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
+		D779D05A2D4ACB3000B83480 /* String-ExtensionLocolize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String-ExtensionLocolize.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +78,7 @@
 		D747794C2D48CD3800132386 = {
 			isa = PBXGroup;
 			children = (
+				D70902C12D4AC59D0072B8A0 /* SwiftUIView.swift */,
 				D74779572D48CD3800132386 /* WorldCountries */,
 				D74779562D48CD3800132386 /* Products */,
 			);
@@ -88,6 +98,7 @@
 				D74779692D48D03A00132386 /* App */,
 				D74779702D48D1CE00132386 /* API */,
 				D747796C2D48D0C600132386 /* Modules */,
+				D779D0592D4ACAF200B83480 /* Helpers */,
 				D74779662D48CF5400132386 /* Resources */,
 				D74779832D497BDE00132386 /* Storage */,
 				D70902B42D4A807C0072B8A0 /* Preview Content */,
@@ -99,6 +110,7 @@
 		D74779662D48CF5400132386 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D70902BD2D4ABE830072B8A0 /* Localizable.strings */,
 				D747795C2D48CD3B00132386 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -146,6 +158,7 @@
 				D747797C2D48EDD700132386 /* CountryCell.swift */,
 				D709029D2D4A5C730072B8A0 /* MapView.swift */,
 				D747797E2D48EDF300132386 /* CustomLoadView.swift */,
+				D70902B72D4A86F10072B8A0 /* SearchTextField.swift */,
 				D709029A2D4A4E2C0072B8A0 /* TabBarView.swift */,
 			);
 			path = "UI-Components";
@@ -168,6 +181,14 @@
 				D70902A72D4A70AE0072B8A0 /* CoreDataManager.swift */,
 			);
 			path = Storage;
+			sourceTree = "<group>";
+		};
+		D779D0592D4ACAF200B83480 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D779D05A2D4ACB3000B83480 /* String-ExtensionLocolize.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,6 +233,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = D747794C2D48CD3800132386;
 			packageReferences = (
@@ -231,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D70902B62D4A822F0072B8A0 /* Preview Assets.xcassets in Resources */,
+				D70902BB2D4ABE830072B8A0 /* Localizable.strings in Resources */,
 				D747795D2D48CD3B00132386 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -244,6 +267,8 @@
 			files = (
 				D74779722D48D1E500132386 /* APIManager.swift in Sources */,
 				D709029E2D4A5C730072B8A0 /* MapView.swift in Sources */,
+				D70902C22D4AC59D0072B8A0 /* SwiftUIView.swift in Sources */,
+				D779D05B2D4ACB3000B83480 /* String-ExtensionLocolize.swift in Sources */,
 				D709029B2D4A4E2C0072B8A0 /* TabBarView.swift in Sources */,
 				D70902A82D4A70AE0072B8A0 /* CoreDataManager.swift in Sources */,
 				D747797A2D48D35C00132386 /* CountryLIstViewModel.swift in Sources */,
@@ -257,10 +282,23 @@
 				D74779782D48D31700132386 /* CountryCellModel.swift in Sources */,
 				D70902A62D4A6F860072B8A0 /* PersistenceController.swift in Sources */,
 				D747797D2D48EDD700132386 /* CountryCell.swift in Sources */,
+				D70902B82D4A86F10072B8A0 /* SearchTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D70902BD2D4ABE830072B8A0 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D70902BC2D4ABE830072B8A0 /* en */,
+				D70902BE2D4ABEE10072B8A0 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		D74779612D48CD3B00132386 /* Debug */ = {
@@ -313,7 +351,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -367,7 +405,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

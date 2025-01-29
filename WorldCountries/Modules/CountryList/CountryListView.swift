@@ -8,26 +8,25 @@ struct CountryListView: View {
     var body: some View {
         ZStack{
             if countryListModel.isLoading{
-                CustomLoadView()
-                    .rotationEffect(Angle(degrees: countryListModel.isLoading ? 360 : 0))
-                    .animation(.linear(duration: 1).repeatForever(), value: countryListModel.isLoading)
+                CustomLoadView(isLoading: countryListModel.isLoading)
+    
             } else {
                 NavigationStack{
                     SearchTextField(searchText: $countryListModel.searchText)
                     List($countryListModel.cellModels, id: \.name) { $countryCellModel in
-                        CountryCell(countryCellModel: $countryCellModel, complection: { cellModel in
-                            countryListModel.changeisFavoritIn(cellModel)
+                        CountryCell(countryCellModel: $countryCellModel, completion: { cellModel in
+                            countryListModel.changeIsFavoritIn(cellModel)
                         })
                             .background{
                                 NavigationLink(destination: CountryView(countryModell: $countryCellModel, complection: {cellModel in
-                                    countryListModel.changeisFavoritIn(cellModel)
+                                    countryListModel.changeIsFavoritIn(cellModel)
                                 })){
                                 }
                                     .opacity(0)
                             }
                     }
-                    TabBarView(favoritComplection: countryListModel.returnFavoritCountries, allComplection: countryListModel.returnAllCuntries)
-                    .navigationTitle("World Countries")
+                    TabBarView(favoritCompletion: countryListModel.returnFavoriteCountries, allCompletion: countryListModel.returnAllCountries)
+                    .navigationTitle("world_countries")
                 }
             }
         }
@@ -35,21 +34,12 @@ struct CountryListView: View {
             countryListModel.fetchData()
         }
         .alert(isPresented: $countryListModel.showingAlert){
-            Alert(title: Text("Отсутствие интернета"), message: Text("Ошибка подключения"), dismissButton: .default(Text("Попробовать еще раз")){
+            Alert(title: Text("no_internet"),
+                  message: Text("connection_error"),
+                  dismissButton: .default(Text("retry")){
                 countryListModel.fetchData()
             })
         }
     }
 }
-
-
-struct SearchTextField : View{
-    @Binding var searchText: String
-    var body: some View{
-        TextField("Search", text: $searchText)
-            .textFieldStyle(.roundedBorder)
-            .padding(5)
-    }
-}
-
 

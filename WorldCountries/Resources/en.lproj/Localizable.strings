@@ -1,0 +1,82 @@
+/* 
+  Localizable.strings
+  WorldCountries
+
+  Created by Ivan Pushkov on 29.01.2025.
+  
+*/
+
+"world_countries" = "World Countries";
+"no_internet" = "No Internet Connection";
+"connection_error" = "Connection Error";
+"retry" = "Try Again";
+
+"population_format" = "%@ people";
+"area_format" = "Area is %@ km²";
+"timezones_unknown" = "Unknown Timezones";
+"currency_unknown" = "Unknown Currency";
+"currency_format" = "Currency - %@, %@";
+
+
+"South Georgia" = "South Georgia";
+"Grenada" = "Grenada";
+"Switzerland" = "Switzerland";
+"Sierra Leone" = "Sierra Leone";
+"Hungary" = "Hungary";
+"Taiwan" = "Taiwan";
+"Wallis and Futuna" = "Wallis and Futuna";
+"Barbados" = "Barbados";
+"Pitcairn Islands" = "Pitcairn Islands";
+"Ivory Coast" = "Ivory Coast";
+"Tunisia" = "Tunisia";
+"Italy" = "Italy";
+"Benin" = "Benin";
+"Indonesia" = "Indonesia";
+"Cape Verde" = "Cape Verde";
+"Saint Kitts and Nevis" = "Saint Kitts and Nevis";
+"Laos" = "Laos";
+"Caribbean Netherlands" = "Caribbean Netherlands";
+"Uganda" = "Uganda";
+"Andorra" = "Andorra";
+"Burundi" = "Burundi";
+"South Africa" = "South Africa";
+"France" = "France";
+"Libya" = "Libya";
+"Mexico" = "Mexico";
+"Gabon" = "Gabon";
+"Russia" = "Russia";
+"Germany" = "Germany";
+"United States" = "United States";
+"United Kingdom" = "United Kingdom";
+"China" = "China";
+"Japan" = "Japan";
+"Brazil" = "Brazil";
+"Canada" = "Canada";
+"India" = "India";
+"Spain" = "Spain";
+"Australia" = "Australia";
+"Argentina" = "Argentina";
+"Sweden" = "Sweden";
+"South Korea" = "South Korea";
+"North Korea" = "North Korea";
+"Ukraine" = "Ukraine";
+"Poland" = "Poland";
+"Turkey" = "Turkey";
+"Vietnam" = "Vietnam";
+"Egypt" = "Egypt";
+"Norway" = "Norway";
+"Saudi Arabia" = "Saudi Arabia";
+"Thailand" = "Thailand";
+"Pakistan" = "Pakistan";
+"Netherlands" = "Netherlands";
+"Malaysia" = "Malaysia";
+"Philippines" = "Philippines";
+"Iran" = "Iran";
+
+// Capitals
+
+// Currency
+
+//Langueges
+
+//Region

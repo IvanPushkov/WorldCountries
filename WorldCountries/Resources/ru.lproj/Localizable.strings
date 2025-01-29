@@ -1,0 +1,80 @@
+/* 
+  Localizable.strings
+  WorldCountries
+
+  Created by Ivan Pushkov on 29.01.2025.
+  
+*/
+"world_countries" = "Страны мира";
+"no_internet" = "Отсутствие интернета";
+"connection_error" = "Ошибка подключения";
+"retry" = "Попробовать еще раз";
+
+"population_format" = "%@ человек";
+"area_format" = "Площадь: %@ км²";
+"timezones_unknown" = "Часовые пояса неизвестны";
+"currency_unknown" = "Валюта неизвестна";
+"currency_format" = "Валюта - %@, %@";
+
+"South Georgia" = "Южная Георгия";
+"Grenada" = "Гренада";
+"Switzerland" = "Швейцария";
+"Sierra Leone" = "Сьерра-Леоне";
+"Hungary" = "Венгрия";
+"Taiwan" = "Тайвань";
+"Wallis and Futuna" = "Уоллис и Футуна";
+"Barbados" = "Барбадос";
+"Pitcairn Islands" = "Острова Питкэрн";
+"Ivory Coast" = "Кот-д'Ивуар";
+"Tunisia" = "Тунис";
+"Italy" = "Италия";
+"Benin" = "Бенин";
+"Indonesia" = "Индонезия";
+"Cape Verde" = "Кабо-Верде";
+"Saint Kitts and Nevis" = "Сент-Китс и Невис";
+"Laos" = "Лаос";
+"Caribbean Netherlands" = "Карибские Нидерланды";
+"Uganda" = "Уганда";
+"Andorra" = "Андорра";
+"Burundi" = "Бурунди";
+"South Africa" = "Южно-Африканская Республика";
+"France" = "Франция";
+"Libya" = "Ливия";
+"Mexico" = "Мексика";
+"Gabon" = "Габон";
+"Russia" = "Россия";
+"Germany" = "Германия";
+"United States" = "Соединенные Штаты";
+"United Kingdom" = "Великобритания";
+"China" = "Китай";
+"Japan" = "Япония";
+"Brazil" = "Бразилия";
+"Canada" = "Канада";
+"India" = "Индия";
+"Spain" = "Испания";
+"Australia" = "Австралия";
+"Argentina" = "Аргентина";
+"Sweden" = "Швеция";
+"South Korea" = "Южная Корея";
+"North Korea" = "Северная Корея";
+"Ukraine" = "Украина";
+"Poland" = "Польша";
+"Turkey" = "Турция";
+"Vietnam" = "Вьетнам";
+"Egypt" = "Египет";
+"Norway" = "Норвегия";
+"Saudi Arabia" = "Саудовская Аравия";
+"Thailand" = "Таиланд";
+"Pakistan" = "Пакистан";
+"Netherlands" = "Нидерланды";
+"Malaysia" = "Малайзия";
+"Philippines" = "Филиппины";
+"Iran" = "Иран";
+
+// Capitals
+
+// Currency
+
+//Langueges
+
+//Region

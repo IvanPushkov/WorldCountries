@@ -8,39 +8,39 @@
 import SwiftUI
 
 struct TabBarView: View {
-    var favoritComplection: () -> ()
-    var allComplection: () -> () 
+    var favoritCompletion: () -> ()
+    var allCompletion: () -> () 
     @State var favoritActive: Bool = true
 
     var body: some View {
         HStack{
             Image(systemName: "heart.fill")
                 .font(.system(size: favoritActive ? 30 : 50))
-                .foregroundColor(favoritActive ? Color.black : Color.red)
+                .foregroundColor(favoritActive ? Color("OfButton") : Color("OnButton"))
                 .onTapGesture {
                     withAnimation {
                         if favoritActive{
                             favoritActive.toggle()
                         }
                     }
-                    favoritComplection()
+                    favoritCompletion()
                 }
             Spacer()
             Image(systemName: "list.bullet.rectangle.portrait.fill")
                 .font(.system(size: favoritActive ? 50 : 30))
-                .foregroundColor(favoritActive ? Color.red : Color.black)
+                .foregroundColor(favoritActive ? Color("OnButton") : Color("OfButton"))
                 .onTapGesture {
                     withAnimation {
                         if !favoritActive{
                             favoritActive.toggle()
                         }
                     }
-                    allComplection()
+                    allCompletion()
                 }
                 
         }
         .padding(.horizontal, 45)
-        .background(.gray)
+        .background(Color("TabBarBg"))
     }
 }
 
