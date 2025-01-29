@@ -11,7 +11,7 @@ protocol CountryListViewModelProtocol: ObservableObject{
 }
 
 class CountryListViewModel: CountryListViewModelProtocol{
-    
+    let coreDataManager =  CoreDataManager.shared
     var allCellModels: [CountryCellModel] = []
     @Published var searchText: String = "" {
         didSet{
@@ -28,6 +28,7 @@ class CountryListViewModel: CountryListViewModelProtocol{
             if error == nil{
                 allCellModels = data!.map{ CountryCellModel(country: $0)
                 }
+                markFavorit()
                 cellModels = allCellModels
                 isLoading = false
             } else {
@@ -35,6 +36,18 @@ class CountryListViewModel: CountryListViewModelProtocol{
             }
         }
     }
+    private func markFavorit(){
+        var markedModels = [CountryCellModel]()
+        for model in allCellModels{
+            var copy = model
+            if coreDataManager.fetchCountries().contains(model.name){
+                copy.isFavorits = true
+            }
+            markedModels.append(copy)
+        }
+        allCellModels = markedModels
+    }
+    
     private func filterData() {
         cellModels = allCellModels
         cellModels = searchText.isEmpty ? cellModels : cellModels.filter {
@@ -46,6 +59,7 @@ class CountryListViewModel: CountryListViewModelProtocol{
         if let index = allCellModels.firstIndex(where: { $0.name == country.name }) {
                     allCellModels[index].isFavorits.toggle()
                 }
+        country.isFavorits ? coreDataManager.saveNewCountry(country: country) : coreDataManager.deleteCountry(country: country)
     }
     func returnFavoritCountries(){
         var favorits = [CountryCellModel]()

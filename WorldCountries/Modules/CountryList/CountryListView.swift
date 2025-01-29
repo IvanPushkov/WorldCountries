@@ -11,7 +11,6 @@ struct CountryListView: View {
                 CustomLoadView()
                     .rotationEffect(Angle(degrees: countryListModel.isLoading ? 360 : 0))
                     .animation(.linear(duration: 1).repeatForever(), value: countryListModel.isLoading)
-                    
             } else {
                 NavigationStack{
                     SearchTextField(searchText: $countryListModel.searchText)
