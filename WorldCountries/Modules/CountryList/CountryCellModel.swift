@@ -22,9 +22,9 @@ struct CountryCellModel{
         self.country = country
         name = country.name.common.localized
         flag = country.flag
-        region = country.region
+        region = country.region.localized
         
-        capital = country.capital?.first
+        capital = country.capital?.first?.localized
         population = "population_format".localized("\(country.population)")
         area = "area_format".localized("\(country.area)")
         languages = country.languages?.values.sorted()

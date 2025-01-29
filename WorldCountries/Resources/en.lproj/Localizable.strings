@@ -17,6 +17,8 @@
 "currency_unknown" = "Unknown Currency";
 "currency_format" = "Currency - %@, %@";
 
+"no_Capital" = "No Capital";
+"Unknown_Language" = "Unknown Language";
 
 "South Georgia" = "South Georgia";
 "Grenada" = "Grenada";
@@ -74,9 +76,80 @@
 "Iran" = "Iran";
 
 // Capitals
-
+"King Edward Point" = "King Edward Point";
+"St. George's" = "St. George's";
+"Bern" = "Bern";
+"Freetown" = "Freetown";
+"Budapest" = "Budapest";
+"Taipei" = "Taipei";
+"Mata-Utu" = "Mata-Utu";
+"Bridgetown" = "Bridgetown";
+"Adamstown" = "Adamstown";
+"Yamoussoukro" = "Yamoussoukro";
+"Tunis" = "Tunis";
+"Rome" = "Rome";
+"Porto-Novo" = "Porto-Novo";
+"Jakarta" = "Jakarta";
+"Praia" = "Praia";
+"Basseterre" = "Basseterre";
+"Vientiane" = "Vientiane";
+"Kralendijk" = "Kralendijk";
+"Kampala" = "Kampala";
+"Andorra la Vella" = "Andorra la Vella";
+"Gitega" = "Gitega";
+"Pretoria" = "Pretoria";
+"Paris" = "Paris";
+"Tripoli" = "Tripoli";
+"Mexico City" = "Mexico City";
+"Libreville" = "Libreville";
+"Saipan" = "Saipan";
+"Skopje" = "Skopje";
+"Beijing" = "Beijing";
+"Sana'a" = "Sana'a";
+"Gustavia" = "Gustavia";
+"St. Peter Port" = "St. Peter Port";
+"Honiara" = "Honiara";
+"Longyearbyen" = "Longyearbyen";
+"Tórshavn" = "Tórshavn";
+"Tashkent" = "Tashkent";
+"Cairo" = "Cairo";
+"Dakar" = "Dakar";
+"Sri Jayawardenepura Kotte" = "Sri Jayawardenepura Kotte";
+"Ramallah" = "Ramallah";
+"Dhaka" = "Dhaka";
+"Lima" = "Lima";
+"Singapore" = "Singapore";
+"Ankara" = "Ankara";
+"Kabul" = "Kabul";
+"Oranjestad" = "Oranjestad";
+"Avarua" = "Avarua";
+"London" = "London";
+"Lusaka" = "Lusaka";
+"Helsinki" = "Helsinki";
+"Niamey" = "Niamey";
+"Flying Fish Cove" = "Flying Fish Cove";
+"Fakaofo" = "Fakaofo";
+"Bissau" = "Bissau";
+"Baku" = "Baku";
+"Saint-Denis" = "Saint-Denis";
+"Djibouti" = "Djibouti";
+"Pyongyang" = "Pyongyang";
+"Port Louis" = "Port Louis";
+"Plymouth" = "Plymouth";
+"Charlotte Amalie" = "Charlotte Amalie";
+"Bogotá" = "Bogotá";
+"Athens" = "Athens";
+"Zagreb" = "Zagreb";
+"Rabat" = "Rabat";
+"Algiers" = "Algiers";
 // Currency
 
 //Langueges
 
 //Region
+"Antarctic" = "Antarctic";
+"Americas" = "Americas";
+"Europe" = "Europe";
+"Africa" = "Africa";
+"Asia" = "Asia";
+"Oceania" = "Oceania";

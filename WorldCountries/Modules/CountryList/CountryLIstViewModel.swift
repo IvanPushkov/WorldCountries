@@ -6,7 +6,6 @@ import SwiftUI
 protocol CountryListViewModelProtocol: ObservableObject{
     var showingAlert: Bool {get set}
     var isLoading: Bool {get set}
-   
     func fetchData()
 }
 

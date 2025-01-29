@@ -52,27 +52,15 @@ struct CountryView: View {
 
 struct MainCountryInformationView: View {
     let countryModell: CountryCellModel
-    let verticalPadding: CGFloat = 10
     var body: some View {
         HStack{
             VStack(alignment: .leading){
-                Text(countryModell.capital ?? "No Capital")
-                    .font(.system(size: 20))
-                    .padding(.bottom, verticalPadding)
-                Text(countryModell.population)
-                    .font(.system(size: 20))
-                    .padding(.bottom, verticalPadding)
-                Text(countryModell.area)
-                    .font(.system(size: 20))
-                    .padding(.bottom, verticalPadding)
-                Text(countryModell.currency)
-                    .font(.system(size: 15))
-                    .padding(.bottom, verticalPadding)
-                Text((countryModell.languages?.first)!)
-                    .font(.system(size: 20))
-                Text(countryModell.timezones)
-                    .font(.system(size: 20))
-                    .padding(.bottom, verticalPadding)
+                InformationText(text: countryModell.capital ?? "no_Capital".localized)
+                InformationText(text: countryModell.population)
+                InformationText(text: countryModell.area)
+                InformationText(text: countryModell.currency)
+                InformationText(text: (countryModell.languages?.first) ?? "Unknown_Language".localized)
+                InformationText(text: countryModell.timezones)
             }
             Text(countryModell.flag)
                 .font(.system(size: 150))
@@ -82,3 +70,12 @@ struct MainCountryInformationView: View {
     }
 }
 
+struct InformationText: View {
+    let text: String
+    let fontSize: CGFloat = 20
+    var body: some View {
+        Text(text)
+            .font(.system(size: fontSize))
+            .padding(.bottom, 20)
+    }
+}
