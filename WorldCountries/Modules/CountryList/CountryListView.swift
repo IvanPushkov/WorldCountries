@@ -14,18 +14,19 @@ struct CountryListView: View {
                     
             } else {
                 NavigationStack{
-                    List(countryListModel.cellModels) { countryCellModel in
-                    
-                        CountryCell(countryCellModell: countryCellModel)
+                    SearchTextField(searchText: $countryListModel.searchText)
+                    List($countryListModel.cellModels) { $countryCellModel in
+                        CountryCell(countryCellModel: $countryCellModel, complection: { cellModel in
+                            countryListModel.changeisFavoritIn(cellModel)
+                        })
                             .background{
-                                NavigationLink(destination: CountryView(countryModell: countryCellModel)){
+                                NavigationLink(destination: CountryView(countryModell: $countryCellModel, complection: {cellModel in
+                                    countryListModel.changeisFavoritIn(cellModel)
+                                })){
                                 }
                                     .opacity(0)
                             }
-                        
-                       
                     }
-                    
                     .navigationTitle("World Countries")
                     
                 }
@@ -48,5 +49,13 @@ struct CountryListView: View {
 //    }
 //}
 
+struct SearchTextField : View{
+    @Binding var searchText: String
+    var body: some View{
+        TextField("Search", text: $searchText)
+            .textFieldStyle(.roundedBorder)
+            .padding()
+    }
+}
 
 

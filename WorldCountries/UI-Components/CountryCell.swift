@@ -1,15 +1,10 @@
 
 
 import SwiftUI
-import UIKit
+
 struct CountryCell: View{
-     var countryCellModel: CountryCellModel
-    @State private var isFavorits: Bool
-    
-    init(countryCellModell: CountryCellModel){
-        self.countryCellModel = countryCellModell
-        self.isFavorits = countryCellModell.isFavorits
-    }
+    @Binding var countryCellModel: CountryCellModel
+    var complection: (CountryCellModel)-> ()
     
     var body: some View{
         HStack {
@@ -32,12 +27,14 @@ struct CountryCell: View{
                     .foregroundColor(Color.primary)
                 Image(systemName: "heart.fill")
                     .font(.system(size: 30))
-                    .scaleEffect(isFavorits ? 1.2 : 1.0)
-                .foregroundColor(isFavorits ? .red : .gray)
-                .animation(.default, value: isFavorits)
+                    .scaleEffect(countryCellModel.isFavorits ? 1.2 : 1.0)
+                    .foregroundColor(countryCellModel.isFavorits ? .red : .gray)
             }
             .onTapGesture {
-                isFavorits.toggle()
+                withAnimation(.spring()) {
+                    countryCellModel.toggleIsFavorits()
+                    complection(self.countryCellModel)
+                }
             }
         }
     }

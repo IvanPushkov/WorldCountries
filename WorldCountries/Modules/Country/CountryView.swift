@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct CountryView: View {
-    var countryModell: CountryCellModel
+    @Binding var countryModell: CountryCellModel
+    var complection: (CountryCellModel)-> ()
     var body: some View {
         
         VStack(alignment: .leading) {
@@ -22,12 +23,22 @@ struct CountryView: View {
                 .font(.system(size: 20))
             Text((countryModell.languages?.first)!)
                 .font(.system(size: 20))
+            ZStack{
+                Circle()
+                    .frame(width: 60, height: 60)
+                    .foregroundColor(Color.primary)
+                Image(systemName: "heart.fill")
+                    .font(.system(size: 30))
+                    .scaleEffect(countryModell.isFavorits ? 1.2 : 1.0)
+                    .foregroundColor(countryModell.isFavorits ? .red : .gray)
+                    .animation(.default, value: countryModell.isFavorits)
+            }
+            .onTapGesture {
+                complection(countryModell)
+                countryModell.isFavorits.toggle()
+            }
+            }
         }
     }
-}
 
-//struct CountryView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CountryView()
-//    }
-//}
+

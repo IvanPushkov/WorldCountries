@@ -18,6 +18,7 @@
 		D747797D2D48EDD700132386 /* CountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D747797C2D48EDD700132386 /* CountryCell.swift */; };
 		D747797F2D48EDF300132386 /* CustomLoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D747797E2D48EDF300132386 /* CustomLoadView.swift */; };
 		D74779822D4906FD00132386 /* CountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74779812D4906FD00132386 /* CountryView.swift */; };
+		D74779852D497BF900132386 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74779842D497BF900132386 /* StorageManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		D747797C2D48EDD700132386 /* CountryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCell.swift; sourceTree = "<group>"; };
 		D747797E2D48EDF300132386 /* CustomLoadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoadView.swift; sourceTree = "<group>"; };
 		D74779812D4906FD00132386 /* CountryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryView.swift; sourceTree = "<group>"; };
+		D74779842D497BF900132386 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				D747796C2D48D0C600132386 /* Modules */,
 				D747797B2D48ED9B00132386 /* UI-Components */,
 				D74779662D48CF5400132386 /* Resources */,
+				D74779832D497BDE00132386 /* Storage */,
 				D747795E2D48CD3B00132386 /* Preview Content */,
 			);
 			path = WorldCountries;
@@ -142,6 +145,14 @@
 				D74779812D4906FD00132386 /* CountryView.swift */,
 			);
 			path = Country;
+			sourceTree = "<group>";
+		};
+		D74779832D497BDE00132386 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				D74779842D497BF900132386 /* StorageManager.swift */,
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,6 +232,7 @@
 				D747796B2D48D05500132386 /* App.swift in Sources */,
 				D74779762D48D2C900132386 /* CountryListView.swift in Sources */,
 				D747797F2D48EDF300132386 /* CustomLoadView.swift in Sources */,
+				D74779852D497BF900132386 /* StorageManager.swift in Sources */,
 				D74779782D48D31700132386 /* CountryCellModel.swift in Sources */,
 				D747797D2D48EDD700132386 /* CountryCell.swift in Sources */,
 			);

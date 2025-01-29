@@ -2,7 +2,11 @@
 
 import Foundation
 
-class CountryCellModel: Identifiable{
+
+
+struct CountryCellModel: Identifiable{
+  
+    
     private let country: Country
     var id = UUID()
     
@@ -35,7 +39,7 @@ class CountryCellModel: Identifiable{
         setCurrency(country.currencies)
     }
     
-    private func setCurrency(_ currencies: [String: Currency]?) {
+    private mutating func setCurrency(_ currencies: [String: Currency]?) {
         if let currencies = currencies, !currencies.isEmpty {
             var currencyList: [String] = []
             for currency in currencies.values {
@@ -44,6 +48,9 @@ class CountryCellModel: Identifiable{
             }
             self.currency = currencyList.joined(separator: ", ")
         }
+    }
+    mutating func toggleIsFavorits(){
+        isFavorits.toggle()
     }
     
 }
