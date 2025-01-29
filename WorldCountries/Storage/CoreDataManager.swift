@@ -10,12 +10,6 @@ import CoreData
 class CoreDataManager{
     static let shared = CoreDataManager()
      private let context = PersistenceController.shared.context
-    var favoritCountries = [FavoritCountry]() {
-        didSet {
-            favoritCountries =  fetchCountriesEntity()
-        }
-    }
-                
             
      // Сохранение страны
     private func saveCountry(_ country: FavoritCountry) {
@@ -60,7 +54,7 @@ class CoreDataManager{
      }
 
     func deleteCountry(country: CountryCellModel){
-        for favoriteCountry in favoritCountries{
+        for favoriteCountry in fetchCountriesEntity(){
             if favoriteCountry.name == country.name{
                 deleteCountry(favoriteCountry)
             }
