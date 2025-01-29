@@ -19,7 +19,7 @@ struct Country: Decodable{
     let region: String
     let languages: [String: String]?
     let timezones: [String]?
-    let coordinates: [Double]?
+    let latlng: [Double]?
     let currencies: [String: Currency]?
 }
 

@@ -4,12 +4,8 @@ import Foundation
 
 
 
-struct CountryCellModel: Identifiable{
-  
-    
-    private let country: Country
-    var id = UUID()
-    
+struct CountryCellModel{
+    private let country: Country?
     var isFavorits: Bool
     let name: String
     let flag: String
@@ -30,10 +26,10 @@ struct CountryCellModel: Identifiable{
         
         capital = country.capital?.first
         population = "\(country.population) people"
-        area = "\(country.area) km²"
+        area = "Area is \(country.area) km²"
         languages = country.languages?.values.sorted()
         timezones = country.timezones?.joined(separator: ", ") ?? "Unknown Timezones"
-        coordinates = country.coordinates
+        coordinates = country.latlng
         isFavorits = false
         self.currency = "Unknown Currency"
         setCurrency(country.currencies)
@@ -43,7 +39,7 @@ struct CountryCellModel: Identifiable{
         if let currencies = currencies, !currencies.isEmpty {
             var currencyList: [String] = []
             for currency in currencies.values {
-                let currencyString = "\(currency.name) \(currency.symbol )"
+                let currencyString = "Currency - \(currency.name), \(currency.symbol )"
                 currencyList.append(currencyString)
             }
             self.currency = currencyList.joined(separator: ", ")

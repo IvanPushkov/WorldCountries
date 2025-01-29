@@ -15,7 +15,7 @@ struct CountryListView: View {
             } else {
                 NavigationStack{
                     SearchTextField(searchText: $countryListModel.searchText)
-                    List($countryListModel.cellModels) { $countryCellModel in
+                    List($countryListModel.cellModels, id: \.name) { $countryCellModel in
                         CountryCell(countryCellModel: $countryCellModel, complection: { cellModel in
                             countryListModel.changeisFavoritIn(cellModel)
                         })
@@ -27,8 +27,8 @@ struct CountryListView: View {
                                     .opacity(0)
                             }
                     }
+                    TabBarView(favoritComplection: countryListModel.returnFavoritCountries, allComplection: countryListModel.returnAllCuntries)
                     .navigationTitle("World Countries")
-                    
                 }
             }
         }
@@ -43,18 +43,13 @@ struct CountryListView: View {
     }
 }
 
-//struct CountryListView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CountryListView()
-//    }
-//}
 
 struct SearchTextField : View{
     @Binding var searchText: String
     var body: some View{
         TextField("Search", text: $searchText)
             .textFieldStyle(.roundedBorder)
-            .padding()
+            .padding(5)
     }
 }
 

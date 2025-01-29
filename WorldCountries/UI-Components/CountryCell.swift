@@ -20,7 +20,6 @@ struct CountryCell: View{
                     .foregroundColor(Color.gray)
             }
             Spacer()
-            
             ZStack {
                 Circle()
                     .frame(width: 60, height: 60)

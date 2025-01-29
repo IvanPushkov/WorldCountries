@@ -37,16 +37,27 @@ class CountryListViewModel: CountryListViewModelProtocol{
     }
     private func filterData() {
         cellModels = allCellModels
-        cellModels = searchText.isEmpty
-                ? cellModels
-                : cellModels.filter { $0.name.lowercased().contains(searchText.lowercased()) }
-        print(cellModels.count)
+        cellModels = searchText.isEmpty ? cellModels : cellModels.filter {
+            $0.name.lowercased().contains(searchText.lowercased())
+        }
     }
-
-     func changeisFavoritIn(_ country: CountryCellModel){
-        if let index = allCellModels.firstIndex(where: { $0.id == country.id }) {
+    
+    func changeisFavoritIn(_ country: CountryCellModel){
+        if let index = allCellModels.firstIndex(where: { $0.name == country.name }) {
                     allCellModels[index].isFavorits.toggle()
                 }
+    }
+    func returnFavoritCountries(){
+        var favorits = [CountryCellModel]()
+        for cellModel in allCellModels{
+            if cellModel.isFavorits{
+                favorits.append(cellModel)
+            }
+        }
+        cellModels = favorits
+    }
+    func returnAllCuntries(){
+        cellModels = allCellModels
     }
     
 }
