@@ -13,7 +13,6 @@
 		D70902A82D4A70AE0072B8A0 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70902A72D4A70AE0072B8A0 /* CoreDataManager.swift */; };
 		D70902B82D4A86F10072B8A0 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70902B72D4A86F10072B8A0 /* SearchTextField.swift */; };
 		D70902BB2D4ABE830072B8A0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D70902BD2D4ABE830072B8A0 /* Localizable.strings */; };
-		D747795D2D48CD3B00132386 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D747795C2D48CD3B00132386 /* Assets.xcassets */; };
 		D747796B2D48D05500132386 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = D747796A2D48D05500132386 /* App.swift */; };
 		D74779722D48D1E500132386 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74779712D48D1E500132386 /* APIManager.swift */; };
 		D74779742D48D26500132386 /* CountryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74779732D48D26500132386 /* CountryModel.swift */; };
@@ -25,6 +24,7 @@
 		D74779822D4906FD00132386 /* CountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74779812D4906FD00132386 /* CountryView.swift */; };
 		D74779882D4A3CFF00132386 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D74779862D4A3CFF00132386 /* CoreDataModel.xcdatamodeld */; };
 		D779D05B2D4ACB3000B83480 /* String-ExtensionLocolize.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779D05A2D4ACB3000B83480 /* String-ExtensionLocolize.swift */; };
+		D779D05E2D4BB72400B83480 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D779D05C2D4BB70300B83480 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,7 +36,6 @@
 		D70902BC2D4ABE830072B8A0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D70902BE2D4ABEE10072B8A0 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D74779552D48CD3800132386 /* WorldCountries.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorldCountries.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D747795C2D48CD3B00132386 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D747796A2D48D05500132386 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		D74779712D48D1E500132386 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		D74779732D48D26500132386 /* CountryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryModel.swift; sourceTree = "<group>"; };
@@ -48,6 +47,7 @@
 		D74779812D4906FD00132386 /* CountryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryView.swift; sourceTree = "<group>"; };
 		D74779872D4A3CFF00132386 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		D779D05A2D4ACB3000B83480 /* String-ExtensionLocolize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String-ExtensionLocolize.swift"; sourceTree = "<group>"; };
+		D779D05C2D4BB70300B83480 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +94,8 @@
 		D74779662D48CF5400132386 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D779D05C2D4BB70300B83480 /* Assets.xcassets */,
 				D70902BD2D4ABE830072B8A0 /* Localizable.strings */,
-				D747795C2D48CD3B00132386 /* Assets.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -235,8 +235,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D779D05E2D4BB72400B83480 /* Assets.xcassets in Resources */,
 				D70902BB2D4ABE830072B8A0 /* Localizable.strings in Resources */,
-				D747795D2D48CD3B00132386 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
