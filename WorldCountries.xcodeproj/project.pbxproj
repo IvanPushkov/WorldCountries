@@ -11,7 +11,6 @@
 		D709029E2D4A5C730072B8A0 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D709029D2D4A5C730072B8A0 /* MapView.swift */; };
 		D70902A62D4A6F860072B8A0 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70902A52D4A6F860072B8A0 /* PersistenceController.swift */; };
 		D70902A82D4A70AE0072B8A0 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70902A72D4A70AE0072B8A0 /* CoreDataManager.swift */; };
-		D70902B62D4A822F0072B8A0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D70902B52D4A822F0072B8A0 /* Preview Assets.xcassets */; };
 		D70902B82D4A86F10072B8A0 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70902B72D4A86F10072B8A0 /* SearchTextField.swift */; };
 		D70902BB2D4ABE830072B8A0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D70902BD2D4ABE830072B8A0 /* Localizable.strings */; };
 		D747795D2D48CD3B00132386 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D747795C2D48CD3B00132386 /* Assets.xcassets */; };
@@ -33,7 +32,6 @@
 		D709029D2D4A5C730072B8A0 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		D70902A52D4A6F860072B8A0 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		D70902A72D4A70AE0072B8A0 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		D70902B52D4A822F0072B8A0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D70902B72D4A86F10072B8A0 /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
 		D70902BC2D4ABE830072B8A0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D70902BE2D4ABEE10072B8A0 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -63,14 +61,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D70902B42D4A807C0072B8A0 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				D70902B52D4A822F0072B8A0 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
 		D747794C2D48CD3800132386 = {
 			isa = PBXGroup;
 			children = (
@@ -96,7 +86,6 @@
 				D779D0592D4ACAF200B83480 /* Helpers */,
 				D74779662D48CF5400132386 /* Resources */,
 				D74779832D497BDE00132386 /* Storage */,
-				D70902B42D4A807C0072B8A0 /* Preview Content */,
 				D747797B2D48ED9B00132386 /* UI-Components */,
 			);
 			path = WorldCountries;
@@ -246,7 +235,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D70902B62D4A822F0072B8A0 /* Preview Assets.xcassets in Resources */,
 				D70902BB2D4ABE830072B8A0 /* Localizable.strings in Resources */,
 				D747795D2D48CD3B00132386 /* Assets.xcassets in Resources */,
 			);
@@ -414,7 +402,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"WorldCountries/Preview Content\"";
 				DEVELOPMENT_TEAM = TX2TU96GUU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -445,7 +432,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"WorldCountries/Preview Content\"";
 				DEVELOPMENT_TEAM = TX2TU96GUU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
