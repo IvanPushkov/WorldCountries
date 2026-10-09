@@ -25,7 +25,7 @@ class CountryListViewModel: CountryListViewModelProtocol{
     func fetchData() {
         aPIManager.fetchAllCountries(){[self] data, error in
             if error == nil{
-                allCellModels = data!.map{ CountryCellModel(country: $0)
+                allCellModels = data!.data.objects.map{ CountryCellModel(country: $0)
                 }
                 markFavorit()
                 cellModels = allCellModels

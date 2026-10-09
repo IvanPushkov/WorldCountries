@@ -152,3 +152,6 @@
 "Africa" = "Африка";
 "Asia" = "Азия";
 "Oceania" = "Океания";
+
+//Network
+"unloaded" = "Не загружено";

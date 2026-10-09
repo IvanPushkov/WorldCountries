@@ -11,5 +11,6 @@ extension String {
     func localized(_ args: CVarArg...) -> String {
         return String(format: self.localized, arguments: args)
     }
+    static let unloaded = "unloaded".localized
 }
 

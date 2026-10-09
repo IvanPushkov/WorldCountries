@@ -153,3 +153,6 @@
 "Africa" = "Africa";
 "Asia" = "Asia";
 "Oceania" = "Oceania";
+
+//Network
+"unloaded" = "Unloaded";

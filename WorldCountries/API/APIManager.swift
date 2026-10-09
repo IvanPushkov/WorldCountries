@@ -2,17 +2,19 @@
 import Foundation
 
 
-class APIManager{
+final class APIManager{
     
-    
-    private var basicURL = "https://restcountries.com/v3.1/"
+    private var basicURL = "https://api.restcountries.com/countries/v5"
+    private let apiKey = "rc_live_cda58c75421c44fc86eeee77829ec20c"
     
     func fetchAllCountries(complection: @escaping (Countries?, String?) -> Void){
-        guard let requestURL = URL(string: "\(basicURL)all") else{
+        guard let baseURL = URL(string: basicURL) else{
             fatalError("Wrong URL")
         }
+        var urlRequest = URLRequest(url: baseURL)
+        urlRequest.setValue(apiKey, forHTTPHeaderField: "Authorization")
         let session = URLSession.shared
-        let task = session.dataTask(with: requestURL){ data, response, error in
+        let task = session.dataTask(with: urlRequest){ data, response, error in
             if error != nil {
                 DispatchQueue.main.async {
                     complection(nil, "Нет подключения к интернету")
