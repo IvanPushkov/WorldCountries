@@ -1,70 +1,69 @@
-# Мировые страны
+# World Countries
 
-**Мировые страны** — это iOS-приложение, позволяющее просматривать информацию о странах мира. Реализовано на **SwiftUI** с архитектурой **MVVM**. Данные загружаются из **REST Countries API**
-## Основные функции
+**World Countries** is an iOS app that lets users browse information about countries around the world. Built with **SwiftUI** using the **MVVM** architecture. Data is loaded from the **REST Countries API**.
 
-### Главный экран
+## Key Features
 
-- Отображение списка стран в виде вертикального списка.
-- Поиск по названию страны.
-- Каждая ячейка включает:
-  - Название страны.
-  - Флаг страны.
-  - Регион (континент).
+### Main Screen
 
-### Детальная информация о стране
+- Displays a list of countries as a vertical list.
+- Search by country name.
+- Each cell includes:
+  - Country name.
+  - Country flag.
+  - Region (continent).
 
-- Официальное название.
-- Столица.
-- Население.
-- Площадь.
-- Валюта (название и символ).
-- Языки.
-- Часовые пояса.
-- Координаты с отображением на **карте (MapKit)**.
-- Флаг в увеличенном размере. (Использовал символы юникода для оптимизации загрузки приложения)
-- Возможность **добавления в избранное**.
+### Country Details
 
-### Избранные страны
+- Official name.
+- Capital.
+- Population.
+- Area.
+- Currency (name and symbol).
+- Languages.
+- Time zones.
+- Coordinates displayed on a **map (MapKit)**.
+- Enlarged flag. (Unicode symbols were used to optimise app loading)
+- Ability to **add to favourites**.
 
-- Раздел с сохранёнными странами.
-- Возможность удаления из избранного.
+### Favourite Countries
 
-### Работа с API
+- A section with saved countries.
+- Ability to remove from favourites.
 
-- Получение данных о странах из **REST Countries API**.
-- Использование **URLSession** для асинхронных запросов.
+### API Integration
 
-### Локальное хранение данных
+- Fetching country data from the **REST Countries API**.
+- Using **URLSession** for asynchronous requests.
 
-- Избранные страны хранятся с помощью **Core Data** / **SwiftData**.
-- Работа **в офлайн-режиме**.
+### Local Data Storage
 
-### Обработка ошибок
+- Favourite countries are stored using **Core Data** / **SwiftData**.
+- **Offline mode** support.
 
-- **Проверка интернет-соединения**.
-- Обработка **сетевых ошибок**.
-- **Алерты** при сбоях для удобства пользователя.
+### Error Handling
 
-### Архитектура
+- **Internet connection check**.
+- **Network error** handling.
+- **Alerts** on failures for a better user experience.
 
-- Реализация на **MVVM**.
-- Чистая архитектура с разделением логики.
+### Architecture
 
-### Установка проекта
+- Implemented with **MVVM**.
+- Clean architecture with separated logic.
 
-Приложение не использует сторонних библиотек, для запуска необходимо всего лишь:
+### Project Setup
 
-1. Скачать данный репозиторий.
-2. Открыть проект в Xcode.
+The app uses no third-party libraries — to run it, you only need to:
 
-## Технологии
+1. Clone this repository.
+2. Open the project in Xcode.
 
-- **SwiftUI** — UI-фреймворк.
-- **MapKit** — отображение стран на карте.
-- **URLSession** — сетевые запросы.
-- **Core Data** — локальное хранение данных.
-- **Swift Package Manager** — управление зависимостями.
-- **REST Countries API** — источник данных.
+## Technologies
 
-
+- **SwiftUI** — UI framework.
+- **MapKit** — displaying countries on a map.
+- **URLSession** — network requests.
+- **Core Data** — local data storage.
+- **Swift Package Manager** — dependency management.
+- **REST Countries API** — data source.
