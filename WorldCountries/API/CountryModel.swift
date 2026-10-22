@@ -43,7 +43,7 @@ struct Names: Decodable {
     let common: String
     let official: String
     let alternates: [String]?
-    // native и translations можно описать, если нужны
+    // `native` and `translations` can be described if needed
 }
 
 struct Codes: Decodable {

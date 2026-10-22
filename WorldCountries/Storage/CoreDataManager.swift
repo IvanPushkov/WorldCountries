@@ -11,7 +11,7 @@ class CoreDataManager{
     static let shared = CoreDataManager()
      private let context = PersistenceController.shared.context
             
-     // Сохранение страны
+     // Save country
     private func saveCountry(_ country: FavoritCountry) {
          do {
              try context.save()
@@ -26,7 +26,7 @@ class CoreDataManager{
     }
     
 
-     // Получение всех стран
+     // Fetch all countries
     private func fetchCountriesEntity() -> [FavoritCountry] {
          let request: NSFetchRequest<FavoritCountry> = FavoritCountry.fetchRequest()
          do {
@@ -47,7 +47,7 @@ class CoreDataManager{
         }
     }
 
-     // Удаление страны
+     // Delete country
     private func deleteCountry(_ country: FavoritCountry) {
          context.delete(country)
          saveContext()
@@ -61,7 +61,7 @@ class CoreDataManager{
         }
     }
     
-     // Сохранение контекста
+     // Save context
   private  func saveContext() {
         do {
             try context.save()
