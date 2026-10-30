@@ -6,45 +6,106 @@ final class APIManager{
     
     private var basicURL = "https://api.restcountries.com/countries/v5"
     private let apiKey = "rc_live_cda58c75421c44fc86eeee77829ec20c"
-    
-    func fetchAllCountries(complection: @escaping (Countries?, String?) -> Void){
-        guard let baseURL = URL(string: basicURL) else{
-            fatalError("Wrong URL")
+    private let pageSize = 100
+    private let requestTimeout: TimeInterval = 30
+
+
+    private let responseFields = [
+        "names.common", "names.official",
+        "flag.emoji",
+        "region",
+        "capitals.name",
+        "population",
+        "area.kilometers",
+        "currencies.code", "currencies.name", "currencies.symbol",
+        "languages.name",
+        "timezones",
+        "coordinates.lat", "coordinates.lng"
+    ].joined(separator: ",")
+
+    private struct PageResponse: Decodable {
+        struct PageData: Decodable {
+            struct Meta: Decodable {
+                let more: Bool?
+            }
+            let objects: [Country]
+            let meta: Meta?
         }
-        var urlRequest = URLRequest(url: baseURL)
-        urlRequest.setValue(apiKey, forHTTPHeaderField: "Authorization")
-        let session = URLSession.shared
-        let task = session.dataTask(with: urlRequest){ data, response, error in
-            if error != nil {
-                DispatchQueue.main.async {
-                    complection(nil, "Нет подключения к интернету")
-                }
+        let data: PageData
+    }
+
+    func fetchAllCountries(completion: @escaping (Countries?, String?) -> Void) {
+        fetchPage(offset: 0, accumulated: [], completion: completion)
+    }
+
+    private func fetchPage(offset: Int,
+                           accumulated: [Country],
+                           completion: @escaping (Countries?, String?) -> Void) {
+        guard var components = URLComponents(string: basicURL) else {
+            finish(completion, with: nil, error: "Invalid API URL")
+            return
+        }
+        components.queryItems = [
+            URLQueryItem(name: "limit", value: String(pageSize)),
+            URLQueryItem(name: "offset", value: String(offset)),
+            URLQueryItem(name: "response_fields", value: responseFields)
+        ]
+        guard let url = components.url else {
+            finish(completion, with: nil, error: "Invalid API URL")
+            return
+        }
+
+        var request = URLRequest(url: url, timeoutInterval: requestTimeout)
+        request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                self.finish(completion, with: nil, error: error.localizedDescription)
                 return
             }
-            
-            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-                print("Invalid response from server")
+            guard let httpResponse = response as? HTTPURLResponse else {
+                self.finish(completion, with: nil, error: "Invalid response from server")
                 return
             }
-            
+            guard httpResponse.statusCode == 200 else {
+                self.finish(completion, with: nil, error: "Server error (HTTP \(httpResponse.statusCode))")
+                return
+            }
             guard let data = data else {
-                DispatchQueue.main.async {
-                    complection(nil, "Ошибка сервера")
-                }
+                self.finish(completion, with: nil, error: "Server returned no data")
                 return
             }
-            
+
             do {
-                let countries = try JSONDecoder().decode(Countries.self, from: data)
-                DispatchQueue.main.async {
-                    complection(countries, nil)
+                let page = try JSONDecoder().decode(PageResponse.self, from: data)
+                let countries = accumulated + page.data.objects
+                let hasMore = page.data.meta?.more ?? (page.data.objects.count == self.pageSize)
+
+                if hasMore && !page.data.objects.isEmpty {
+                    self.fetchPage(offset: offset + page.data.objects.count,
+                                   accumulated: countries,
+                                   completion: completion)
+                } else {
+                    self.finish(completion,
+                                with: Countries(data: CountriesData(objects: countries)),
+                                error: nil)
                 }
             } catch {
-                print("Failed to decode JSON: \(error)")
+                self.finish(completion,
+                            with: nil,
+                            error: "Failed to decode countries: \(error.localizedDescription)")
             }
-            
-        }
-        task.resume()
+        }.resume()
     }
-    
+
+    /// Always reports back on the main queue, exactly once per request chain,
+    /// so a failed request can never leave the UI loading forever.
+    private func finish(_ completion: @escaping (Countries?, String?) -> Void,
+                        with countries: Countries?,
+                        error: String?) {
+        DispatchQueue.main.async {
+            completion(countries, error)
+        }
+    }
 }

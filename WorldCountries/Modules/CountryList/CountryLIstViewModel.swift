@@ -23,20 +23,17 @@ class CountryListViewModel: CountryListViewModelProtocol{
     
     private let aPIManager = APIManager()
     func fetchData() {
-        aPIManager.fetchAllCountries(){[self] data, error in
-            if error == nil{
-                allCellModels = data!.data.objects.map{ CountryCellModel(country: $0)
-                }
-                markFavorit()
-                cellModels = allCellModels
-                allCellModels.forEach { print($0.capital ?? "") }
-                allCellModels.forEach { print($0.currency) }
-                allCellModels.forEach { print($0.languages ?? "") }
-                allCellModels.forEach { print($0.region) }
-                isLoading = false
-            } else {
-                showingAlert = true
+        isLoading = true
+        aPIManager.fetchAllCountries { data, error in
+            guard error == nil, let data = data else {
+                self.showingAlert = true
+                return
             }
+            self.allCellModels = data.data.objects.map { CountryCellModel(country: $0) }
+            self.markFavorit()
+            self.cellModels = self.allCellModels
+            self.isLoading = false
+            self.showingAlert = false
         }
     }
     private func markFavorit(){
