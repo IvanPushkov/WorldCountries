@@ -12,6 +12,7 @@ final class APIManager{
 
     private let responseFields = [
         "names.common", "names.official",
+        "codes.alpha_2", "codes.alpha_3",
         "flag.emoji",
         "region",
         "capitals.name",

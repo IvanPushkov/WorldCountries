@@ -157,3 +157,23 @@
 //Network
 "unloaded" = "Unloaded";
 "loading" = "Loading";
+
+// Categories
+"categories" = "Categories";
+"favorites" = "Favorites";
+"new_category" = "New Category";
+"category_name" = "Category name";
+"add_category" = "Add";
+"cancel" = "Cancel";
+"ok" = "OK";
+"done" = "Done";
+"edit_countries" = "Edit Countries";
+"search_countries" = "Search countries";
+"empty_category" = "No countries yet. Tap Edit Countries to add some.";
+"no_matching_countries" = "No countries match your search.";
+"category_removed" = "This category was deleted.";
+"storage_error" = "Couldn’t access saved countries or categories.";
+"add_favorite" = "Add to Favorites";
+"remove_favorite" = "Remove from Favorites";
+"category_map_color" = "Category Color";
+"category_world_map" = "World map. Pinch to zoom. Tap a country on the map or select it below.";

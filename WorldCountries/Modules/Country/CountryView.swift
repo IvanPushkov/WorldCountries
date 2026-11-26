@@ -7,48 +7,45 @@
 
 import SwiftUI
 
+@MainActor
 struct CountryView: View {
-    @Binding var countryModell: CountryCellModel
-    var complection: (CountryCellModel)-> ()
-    var verticalPadding: CGFloat = 10
+    let countryID: String
+    @ObservedObject var countryListModel: CountryListViewModel
+
     var body: some View {
-        
-        ScrollView {
-            VStack(alignment: .leading) {
-                HStack {
-                    Text(countryModell.name)
-                        .font(.system(.largeTitle, design: .rounded))
-                        .padding(.bottom, 20)
-                    Spacer()
-                    ZStack{
-                        Circle()
-                            .stroke()
-                            .frame(width: 60, height: 60)
-                            .foregroundColor(Color("MainBg"))
-                        Image(systemName: "heart.fill")
-                            .font(.system(size: 40))
-                            .scaleEffect(countryModell.isFavorits ? 1.2 : 1.0)
-                            .foregroundColor(countryModell.isFavorits ?  Color("OnButton"): Color("OfButton") )
-                            .animation(.default, value: countryModell.isFavorits)
+        if let country = countryListModel.country(withID: countryID) {
+            ScrollView {
+                VStack(alignment: .leading) {
+                    HStack {
+                        Text(country.name)
+                            .font(.system(.largeTitle, design: .rounded))
+                            .padding(.bottom, 20)
+                        Spacer()
+                        Button {
+                            withAnimation {
+                                countryListModel.toggleFavorite(countryID)
+                            }
+                        } label: {
+                            Image(systemName: "heart.fill")
+                                .font(.system(size: 40))
+                                .scaleEffect(country.isFavorits ? 1.2 : 1.0)
+                                .foregroundColor(Color(country.isFavorits ? "OnButton" : "OfButton"))
+                                .frame(width: 60, height: 60)
+                                .overlay { Circle().stroke(Color("MainBg")) }
+                        }
+                        .buttonStyle(.plain)
+                        .accessibilityLabel(country.isFavorits ? Text("remove_favorite") : Text("add_favorite"))
                     }
-                    .offset(y: -10)
-                    .onTapGesture {
-                        complection(countryModell)
-                        countryModell.isFavorits.toggle()
+                    MainCountryInformationView(countryModell: country)
+                    if let coordinates = country.coordinates {
+                        MapView(latitude: coordinates.latitude, longitude: coordinates.longitude)
                     }
                 }
-                MainCountryInformationView(countryModell: countryModell)
-                if let latitude = countryModell.coordinates?.first, let longitude = countryModell.coordinates?.last  {
-                    MapView(latitude: latitude, longitude: longitude)
-                }
+                .padding()
             }
-            .padding()
         }
     }
-    
 }
-
-
 
 struct MainCountryInformationView: View {
     let countryModell: CountryCellModel

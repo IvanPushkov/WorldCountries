@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22H221" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="FavoritCountry" representedClassName="FavoritCountry" syncable="YES" codeGenerationType="class">
+        <attribute name="name" attributeType="String"/>
+    </entity>
+    <entity name="SavedCategory" representedClassName="SavedCategory" syncable="YES" codeGenerationType="class">
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" attributeType="String"/>
+        <relationship name="members" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SavedCategoryCountry" inverseName="category" inverseEntity="SavedCategoryCountry"/>
+    </entity>
+    <entity name="SavedCategoryCountry" representedClassName="SavedCategoryCountry" syncable="YES" codeGenerationType="class">
+        <attribute name="countryID" attributeType="String"/>
+        <relationship name="category" maxCount="1" deletionRule="Nullify" destinationEntity="SavedCategory" inverseName="members" inverseEntity="SavedCategory"/>
+    </entity>
+</model>

@@ -4,8 +4,8 @@ import Foundation
 
 
 
-struct CountryCellModel{
-    private let country: Country?
+struct CountryCellModel: Identifiable {
+    let id: String
     var isFavorits: Bool
     let name: String
     let flag: String
@@ -16,10 +16,13 @@ struct CountryCellModel{
     let languages: [String]?
     var currency: String
     let timezones: String
-    let coordinates: [Double]?
+    let coordinates: (latitude: Double, longitude: Double)?
     
     init(country: Country) {
-        self.country = country
+        let code = [country.codes?.alpha3, country.codes?.alpha2]
+            .compactMap { $0 }
+            .first { !$0.isEmpty }
+        id = code.map { "iso:\($0.uppercased())" } ?? "name:\(country.names.common)"
         name = country.names.common.localized
         flag = country.flag?.emoji ?? .unloaded
         region = country.region?.localized ?? .unloaded
@@ -29,7 +32,12 @@ struct CountryCellModel{
         area = "area_format".localized("\(country.area)")
         languages = country.languages?.sorted().map{ $0.name}
         timezones = country.timezones?.joined(separator: ", ") ?? "timezones_unknown".localized
-        coordinates = [country.coordinates?.lat ?? 0.0, country.coordinates?.lng ?? 0.0]
+        if let latitude = country.coordinates?.lat, let longitude = country.coordinates?.lng,
+           (-90...90).contains(latitude), (-180...180).contains(longitude) {
+            coordinates = (latitude, longitude)
+        } else {
+            coordinates = nil
+        }
         isFavorits = false
         currency = "currency_unknown".localized
         setCurrency(country.currencies)
@@ -45,8 +53,4 @@ struct CountryCellModel{
             self.currency = currencyList.joined(separator: ", ")
         }
     }
-    mutating func toggleIsFavorits(){
-        isFavorits.toggle()
-    }
-    
 }
