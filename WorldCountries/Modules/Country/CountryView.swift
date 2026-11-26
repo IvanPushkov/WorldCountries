@@ -10,10 +10,12 @@ import SwiftUI
 @MainActor
 struct CountryView: View {
     let countryID: String
+    let collection: CountryCollection
     @ObservedObject var countryListModel: CountryListViewModel
 
     var body: some View {
         if let country = countryListModel.country(withID: countryID) {
+            let isIncluded = countryListModel.isIncluded(country, in: collection)
             ScrollView {
                 VStack(alignment: .leading) {
                     HStack {
@@ -23,18 +25,18 @@ struct CountryView: View {
                         Spacer()
                         Button {
                             withAnimation {
-                                countryListModel.toggleFavorite(countryID)
+                                countryListModel.toggleCountry(countryID, in: collection)
                             }
                         } label: {
                             Image(systemName: "heart.fill")
                                 .font(.system(size: 40))
-                                .scaleEffect(country.isFavorits ? 1.2 : 1.0)
-                                .foregroundColor(Color(country.isFavorits ? "OnButton" : "OfButton"))
+                                .scaleEffect(isIncluded ? 1.2 : 1.0)
+                                .foregroundColor(Color(isIncluded ? "OnButton" : "OfButton"))
                                 .frame(width: 60, height: 60)
                                 .overlay { Circle().stroke(Color("MainBg")) }
                         }
                         .buttonStyle(.plain)
-                        .accessibilityLabel(country.isFavorits ? Text("remove_favorite") : Text("add_favorite"))
+                        .accessibilityLabel(isIncluded ? Text("remove_from_category") : Text("add_to_category"))
                     }
                     MainCountryInformationView(countryModell: country)
                     if let coordinates = country.coordinates {

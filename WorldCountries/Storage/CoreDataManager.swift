@@ -4,7 +4,7 @@ struct CountryCategory: Identifiable {
     static let defaultMapColorRGB: Int32 = 0x2B78D4
 
     let id: UUID
-    let name: String
+    var name: String
     var countryIDs: Set<String>
     var mapColorRGB: Int32
 }
@@ -61,10 +61,15 @@ final class CoreDataManager {
         return category
     }
 
-    func deleteCategories(ids: Set<UUID>) throws {
-        let request: NSFetchRequest<SavedCategory> = SavedCategory.fetchRequest()
-        request.predicate = NSPredicate(format: "id IN %@", ids.map { $0 as NSUUID } as NSArray)
-        try context.fetch(request).forEach { context.delete($0) }
+    func renameCategory(_ id: UUID, to name: String) throws {
+        let category = try savedCategory(withID: id)
+        category.name = name
+        try saveChanges()
+    }
+
+    func deleteCategory(_ id: UUID) throws {
+        let category = try savedCategory(withID: id)
+        context.delete(category)
         try saveChanges()
     }
 

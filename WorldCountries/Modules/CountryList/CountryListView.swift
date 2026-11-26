@@ -1,46 +1,48 @@
 import SwiftUI
 
 enum CountryRoute: Hashable {
-    case categories
-    case collection(CountryCollection)
-    case country(String)
+    case collection(CountryCollection, editing: Bool)
+    case country(String, collection: CountryCollection)
 }
 
 @MainActor
 struct CountryListView: View {
     @ObservedObject var countryListModel: CountryListViewModel
+    @State private var path: [CountryRoute] = []
 
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             VStack {
                 SearchTextField(searchText: $countryListModel.searchText)
+                CategoryPickerBar(countryListModel: countryListModel)
                 if countryListModel.isLoading {
                     Spacer()
                     CustomLoadView(isLoading: true)
                     Spacer()
+                } else if countryListModel.allCellModels.isEmpty {
+                    Spacer()
+                    Button("retry") { countryListModel.fetchData() }
+                    Spacer()
                 } else {
                     List(countryListModel.cellModels) { country in
-                        CountryCell(country: country, countryListModel: countryListModel)
+                        CountryCell(
+                            country: country,
+                            collection: countryListModel.selectedCollection,
+                            countryListModel: countryListModel
+                        )
                     }
                 }
-                TabBarView(showingFavorites: $countryListModel.showingFavorites)
+                TabBarView(showingSelectedOnly: $countryListModel.showingSelectedOnly)
             }
             .navigationTitle("world_countries")
             .navigationDestination(for: CountryRoute.self) { route in
                 switch route {
-                case .categories:
-                    CategoryListView(countryListModel: countryListModel)
-                case .collection(let collection):
-                    CategoryDetailView(collection: collection, countryListModel: countryListModel)
-                case .country(let countryID):
-                    CountryView(countryID: countryID, countryListModel: countryListModel)
-                }
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink(value: CountryRoute.categories) {
-                        Label("categories", systemImage: "folder")
+                case .collection(let collection, let editing):
+                    CategoryDetailView(collection: collection, countryListModel: countryListModel, editing: editing) { countryID in
+                        path.append(.country(countryID, collection: collection))
                     }
+                case .country(let countryID, let collection):
+                    CountryView(countryID: countryID, collection: collection, countryListModel: countryListModel)
                 }
             }
         }

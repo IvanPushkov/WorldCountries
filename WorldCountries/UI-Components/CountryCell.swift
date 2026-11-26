@@ -3,11 +3,13 @@ import SwiftUI
 @MainActor
 struct CountryCell: View {
     let country: CountryCellModel
+    let collection: CountryCollection
     @ObservedObject var countryListModel: CountryListViewModel
 
     var body: some View {
+        let isIncluded = countryListModel.isIncluded(country, in: collection)
         HStack {
-            NavigationLink(value: CountryRoute.country(country.id)) {
+            NavigationLink(value: CountryRoute.country(country.id, collection: collection)) {
                 HStack {
                     Text(country.flag)
                         .font(.system(size: 60, design: .rounded))
@@ -24,16 +26,16 @@ struct CountryCell: View {
 
             Button {
                 withAnimation(.spring()) {
-                    countryListModel.toggleFavorite(country.id)
+                    countryListModel.toggleCountry(country.id, in: collection)
                 }
             } label: {
                 Image(systemName: "heart.fill")
                     .font(.system(size: 30))
-                    .scaleEffect(country.isFavorits ? 1.2 : 1.0)
-                    .foregroundColor(Color(country.isFavorits ? "OnButton" : "OfButton"))
+                    .scaleEffect(isIncluded ? 1.2 : 1.0)
+                    .foregroundColor(Color(isIncluded ? "OnButton" : "OfButton"))
             }
             .buttonStyle(.borderless)
-            .accessibilityLabel(country.isFavorits ? Text("remove_favorite") : Text("add_favorite"))
+            .accessibilityLabel(isIncluded ? Text("remove_from_category") : Text("add_to_category"))
         }
     }
 }

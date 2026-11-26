@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		41C00B000000000000000002 /* CategoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C00A000000000000000002 /* CategoryDetailView.swift */; };
-		41C00B000000000000000001 /* CategoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C00A000000000000000001 /* CategoryListView.swift */; };
+		41C00B000000000000000001 /* CategoryPickerBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C00A000000000000000001 /* CategoryPickerBar.swift */; };
 		D709029B2D4A4E2C0072B8A0 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D709029A2D4A4E2C0072B8A0 /* TabBarView.swift */; };
 		D709029E2D4A5C730072B8A0 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D709029D2D4A5C730072B8A0 /* MapView.swift */; };
 		D70902A62D4A6F860072B8A0 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70902A52D4A6F860072B8A0 /* PersistenceController.swift */; };
@@ -27,11 +27,13 @@
 		D74779882D4A3CFF00132386 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D74779862D4A3CFF00132386 /* CoreDataModel.xcdatamodeld */; };
 		D779D05B2D4ACB3000B83480 /* String-ExtensionLocolize.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779D05A2D4ACB3000B83480 /* String-ExtensionLocolize.swift */; };
 		D779D05E2D4BB72400B83480 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D779D05C2D4BB70300B83480 /* Assets.xcassets */; };
+		41C00B000000000000000005 /* CategoryWorldMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C00A000000000000000005 /* CategoryWorldMap.swift */; };
+		41C00B000000000000000006 /* CategoryMap in Resources */ = {isa = PBXBuildFile; fileRef = 41C00A000000000000000006 /* CategoryMap */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		41C00A000000000000000002 /* CategoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailView.swift; sourceTree = "<group>"; };
-		41C00A000000000000000001 /* CategoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListView.swift; sourceTree = "<group>"; };
+		41C00A000000000000000001 /* CategoryPickerBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerBar.swift; sourceTree = "<group>"; };
 		D709029A2D4A4E2C0072B8A0 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		D709029D2D4A5C730072B8A0 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		D70902A52D4A6F860072B8A0 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
@@ -54,6 +56,8 @@
 		D779D05C2D4BB70300B83480 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		41C00A000000000000000003 /* CoreDataModelV2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModelV2.xcdatamodel; sourceTree = "<group>"; };
 		41C00A000000000000000004 /* CoreDataModelV3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModelV3.xcdatamodel; sourceTree = "<group>"; };
+		41C00A000000000000000005 /* CategoryWorldMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryWorldMap.swift; sourceTree = "<group>"; };
+		41C00A000000000000000006 /* CategoryMap */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CategoryMap; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				D779D05C2D4BB70300B83480 /* Assets.xcassets */,
+				41C00A000000000000000006 /* CategoryMap */,
 				D70902BD2D4ABE830072B8A0 /* Localizable.strings */,
 			);
 			path = Resources;
@@ -126,7 +131,7 @@
 		D747796D2D48D0FA00132386 /* CountryList */ = {
 			isa = PBXGroup;
 			children = (
-				41C00A000000000000000001 /* CategoryListView.swift */,
+				41C00A000000000000000001 /* CategoryPickerBar.swift */,
 				41C00A000000000000000002 /* CategoryDetailView.swift */,
 				D74779772D48D31700132386 /* CountryCellModel.swift */,
 				D74779792D48D35C00132386 /* CountryLIstViewModel.swift */,
@@ -149,6 +154,7 @@
 			children = (
 				D747797C2D48EDD700132386 /* CountryCell.swift */,
 				D709029D2D4A5C730072B8A0 /* MapView.swift */,
+				41C00A000000000000000005 /* CategoryWorldMap.swift */,
 				D747797E2D48EDF300132386 /* CustomLoadView.swift */,
 				D70902B72D4A86F10072B8A0 /* SearchTextField.swift */,
 				D709029A2D4A4E2C0072B8A0 /* TabBarView.swift */,
@@ -244,6 +250,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D779D05E2D4BB72400B83480 /* Assets.xcassets in Resources */,
+				41C00B000000000000000006 /* CategoryMap in Resources */,
 				D70902BB2D4ABE830072B8A0 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -257,6 +264,7 @@
 			files = (
 				D74779722D48D1E500132386 /* APIManager.swift in Sources */,
 				D709029E2D4A5C730072B8A0 /* MapView.swift in Sources */,
+				41C00B000000000000000005 /* CategoryWorldMap.swift in Sources */,
 				D779D05B2D4ACB3000B83480 /* String-ExtensionLocolize.swift in Sources */,
 				D709029B2D4A4E2C0072B8A0 /* TabBarView.swift in Sources */,
 				D70902A82D4A70AE0072B8A0 /* CoreDataManager.swift in Sources */,
@@ -267,7 +275,7 @@
 				D747796B2D48D05500132386 /* App.swift in Sources */,
 				D74779762D48D2C900132386 /* CountryListView.swift in Sources */,
 				D747797F2D48EDF300132386 /* CustomLoadView.swift in Sources */,
-				41C00B000000000000000001 /* CategoryListView.swift in Sources */,
+				41C00B000000000000000001 /* CategoryPickerBar.swift in Sources */,
 				41C00B000000000000000002 /* CategoryDetailView.swift in Sources */,
 				D74779782D48D31700132386 /* CountryCellModel.swift in Sources */,
 				D70902A62D4A6F860072B8A0 /* PersistenceController.swift in Sources */,

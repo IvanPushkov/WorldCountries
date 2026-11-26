@@ -8,7 +8,8 @@ enum CountryCollection: Hashable {
 @MainActor
 final class CountryListViewModel: ObservableObject {
     @Published var searchText = ""
-    @Published var showingFavorites = false
+    @Published var showingSelectedOnly = false
+    @Published private(set) var selectedCollection: CountryCollection = .favorites
     @Published var showingConnectionError = false
     @Published var showingStorageError = false
     @Published private(set) var isLoading = false
@@ -23,8 +24,9 @@ final class CountryListViewModel: ObservableObject {
     private var hasStarted = false
 
     var cellModels: [CountryCellModel] {
-        allCellModels.filter { country in
-            (!showingFavorites || country.isFavorits)
+        let selectedIDs = showingSelectedOnly ? countryIDs(in: selectedCollection) : []
+        return allCellModels.filter { country in
+            (!showingSelectedOnly || selectedIDs.contains(country.id))
                 && (searchText.isEmpty || country.name.localizedStandardContains(searchText))
         }
     }
@@ -76,7 +78,7 @@ final class CountryListViewModel: ObservableObject {
         allCellModels.first { $0.id == id }
     }
 
-    func toggleFavorite(_ countryID: String) {
+    private func toggleFavorite(_ countryID: String) {
         guard let index = allCellModels.firstIndex(where: { $0.id == countryID }) else { return }
         let country = allCellModels[index]
         let isFavorite = !country.isFavorits
@@ -86,6 +88,29 @@ final class CountryListViewModel: ObservableObject {
             allCellModels[index].isFavorits = isFavorite
         } catch {
             showingStorageError = true
+        }
+    }
+
+    func collectionName(_ collection: CountryCollection) -> String? {
+        switch collection {
+        case .favorites:
+            return "favorites".localized
+        case .category(let id):
+            return categories.first { $0.id == id }?.name
+        }
+    }
+
+    func selectCollection(_ collection: CountryCollection) {
+        guard collectionName(collection) != nil else { return }
+        selectedCollection = collection
+    }
+
+    func isIncluded(_ country: CountryCellModel, in collection: CountryCollection) -> Bool {
+        switch collection {
+        case .favorites:
+            return country.isFavorits
+        case .category(let id):
+            return categories.first { $0.id == id }?.countryIDs.contains(country.id) == true
         }
     }
 
@@ -149,17 +174,37 @@ final class CountryListViewModel: ObservableObject {
         let name = name.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !name.isEmpty else { return }
         do {
-            categories.append(try coreDataManager.createCategory(name: name))
+            let category = try coreDataManager.createCategory(name: name)
+            categories.append(category)
             sortCategories()
+            selectedCollection = .category(category.id)
         } catch {
             showingStorageError = true
         }
     }
 
-    func deleteCategories(ids: Set<UUID>) {
+    func renameCategory(_ id: UUID, to name: String) -> Bool {
+        let name = name.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !name.isEmpty, let index = categories.firstIndex(where: { $0.id == id }) else { return false }
+        guard categories[index].name != name else { return true }
         do {
-            try coreDataManager.deleteCategories(ids: ids)
-            categories.removeAll { ids.contains($0.id) }
+            try coreDataManager.renameCategory(id, to: name)
+            categories[index].name = name
+            sortCategories()
+            return true
+        } catch {
+            showingStorageError = true
+            return false
+        }
+    }
+
+    func deleteCategory(_ id: UUID) {
+        do {
+            try coreDataManager.deleteCategory(id)
+            categories.removeAll { $0.id == id }
+            if selectedCollection == .category(id) {
+                selectedCollection = .favorites
+            }
         } catch {
             showingStorageError = true
         }

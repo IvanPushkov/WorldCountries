@@ -1,16 +1,16 @@
 import SwiftUI
 
 struct TabBarView: View {
-    @Binding var showingFavorites: Bool
+    @Binding var showingSelectedOnly: Bool
 
     var body: some View {
         HStack {
-            tab("favorites", icon: "heart.fill", isSelected: showingFavorites) {
-                showingFavorites = true
+            tab("selected_category", icon: "heart.fill", isSelected: showingSelectedOnly) {
+                showingSelectedOnly = true
             }
             Spacer()
-            tab("world_countries", icon: "list.bullet.rectangle.portrait.fill", isSelected: !showingFavorites) {
-                showingFavorites = false
+            tab("world_countries", icon: "list.bullet.rectangle.portrait.fill", isSelected: !showingSelectedOnly) {
+                showingSelectedOnly = false
             }
         }
         .padding(.horizontal, 45)
