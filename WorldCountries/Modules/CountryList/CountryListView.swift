@@ -47,7 +47,7 @@ struct CountryListView: View {
             }
         }
         .task {
-            countryListModel.loadIfNeeded()
+            await countryListModel.loadIfNeeded()
         }
         .alert("connection_error", isPresented: $countryListModel.showingConnectionError) {
             Button("retry") { countryListModel.fetchData() }

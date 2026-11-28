@@ -29,6 +29,7 @@
 		D779D05E2D4BB72400B83480 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D779D05C2D4BB70300B83480 /* Assets.xcassets */; };
 		41C00B000000000000000005 /* CategoryWorldMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C00A000000000000000005 /* CategoryWorldMap.swift */; };
 		41C00B000000000000000006 /* CategoryMap in Resources */ = {isa = PBXBuildFile; fileRef = 41C00A000000000000000006 /* CategoryMap */; };
+		41C00B000000000000000007 /* CountryCatalogCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C00A000000000000000007 /* CountryCatalogCache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		41C00A000000000000000004 /* CoreDataModelV3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModelV3.xcdatamodel; sourceTree = "<group>"; };
 		41C00A000000000000000005 /* CategoryWorldMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryWorldMap.swift; sourceTree = "<group>"; };
 		41C00A000000000000000006 /* CategoryMap */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CategoryMap; sourceTree = "<group>"; };
+		41C00A000000000000000007 /* CountryCatalogCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCatalogCache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +178,7 @@
 				D74779862D4A3CFF00132386 /* CoreDataModel.xcdatamodeld */,
 				D70902A52D4A6F860072B8A0 /* PersistenceController.swift */,
 				D70902A72D4A70AE0072B8A0 /* CoreDataManager.swift */,
+				41C00A000000000000000007 /* CountryCatalogCache.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				D779D05B2D4ACB3000B83480 /* String-ExtensionLocolize.swift in Sources */,
 				D709029B2D4A4E2C0072B8A0 /* TabBarView.swift in Sources */,
 				D70902A82D4A70AE0072B8A0 /* CoreDataManager.swift in Sources */,
+				41C00B000000000000000007 /* CountryCatalogCache.swift in Sources */,
 				D747797A2D48D35C00132386 /* CountryLIstViewModel.swift in Sources */,
 				D74779882D4A3CFF00132386 /* CoreDataModel.xcdatamodeld in Sources */,
 				D74779742D48D26500132386 /* CountryModel.swift in Sources */,

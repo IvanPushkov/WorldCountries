@@ -12,7 +12,7 @@ final class CountryListViewModel: ObservableObject {
     @Published private(set) var selectedCollection: CountryCollection = .favorites
     @Published var showingConnectionError = false
     @Published var showingStorageError = false
-    @Published private(set) var isLoading = false
+    @Published private(set) var isLoading = true
     @Published private(set) var allCellModels: [CountryCellModel] = []
     @Published private(set) var categories: [CountryCategory] = []
 
@@ -21,7 +21,9 @@ final class CountryListViewModel: ObservableObject {
 
     private let coreDataManager = CoreDataManager.shared
     private let apiManager = APIManager()
+    private let catalogCache = CountryCatalogCache()
     private var hasStarted = false
+    private var isFetching = false
 
     var cellModels: [CountryCellModel] {
         let selectedIDs = showingSelectedOnly ? countryIDs(in: selectedCollection) : []
@@ -31,7 +33,7 @@ final class CountryListViewModel: ObservableObject {
         }
     }
 
-    func loadIfNeeded() {
+    func loadIfNeeded() async {
         guard !hasStarted else { return }
         hasStarted = true
 
@@ -41,36 +43,52 @@ final class CountryListViewModel: ObservableObject {
         } catch {
             showingStorageError = true
         }
+
+        if let cached = await catalogCache.load(), allCellModels.isEmpty {
+            applyCatalog(cached)
+            isLoading = false
+        }
         fetchData()
     }
 
     func fetchData() {
-        guard !isLoading else { return }
+        guard !isFetching else { return }
+        isFetching = true
         showingConnectionError = false
-        isLoading = true
+        isLoading = allCellModels.isEmpty
 
         apiManager.fetchAllCountries { [weak self] countries, _ in
             guard let self else { return }
-            self.isLoading = false
-            guard let countries else {
-                self.showingConnectionError = true
+            defer {
+                self.isFetching = false
+                self.isLoading = false
+            }
+            guard let countries, !countries.data.objects.isEmpty else {
+                self.showingConnectionError = self.allCellModels.isEmpty
                 return
             }
 
-            var favoriteNames = Set<String>()
-            do {
-                favoriteNames = try self.coreDataManager.fetchFavoriteNames()
-            } catch {
-                self.showingStorageError = true
+            self.applyCatalog(countries)
+            Task { [catalogCache = self.catalogCache] in
+                await catalogCache.save(countries)
             }
+        }
+    }
 
-            var seenIDs = Set<String>()
-            self.allCellModels = countries.data.objects.compactMap { country in
-                var model = CountryCellModel(country: country)
-                guard seenIDs.insert(model.id).inserted else { return nil }
-                model.isFavorits = favoriteNames.contains(model.name)
-                return model
-            }
+    private func applyCatalog(_ countries: Countries) {
+        var favoriteNames = Set<String>()
+        do {
+            favoriteNames = try coreDataManager.fetchFavoriteNames()
+        } catch {
+            showingStorageError = true
+        }
+
+        var seenIDs = Set<String>()
+        allCellModels = countries.data.objects.compactMap { country in
+            var model = CountryCellModel(country: country)
+            guard seenIDs.insert(model.id).inserted else { return nil }
+            model.isFavorits = favoriteNames.contains(model.name)
+            return model
         }
     }
 

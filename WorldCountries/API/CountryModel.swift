@@ -7,15 +7,15 @@
 
 import Foundation
 
-struct Countries: Decodable {
+struct Countries: Codable {
     let data: CountriesData
 }
 
-struct CountriesData: Decodable {
+struct CountriesData: Codable {
     let objects: [Country]
 }
 
-struct Country: Decodable {
+struct Country: Codable {
     let names: Names
     let codes: Codes?
     let capitals: [Capital]?
@@ -39,14 +39,14 @@ struct Country: Decodable {
     }
 }
 
-struct Names: Decodable {
+struct Names: Codable {
     let common: String
     let official: String
     let alternates: [String]?
     // `native` and `translations` can be described if needed
 }
 
-struct Codes: Decodable {
+struct Codes: Codable {
     let alpha2: String?
     let alpha3: String?
 
@@ -56,17 +56,17 @@ struct Codes: Decodable {
     }
 }
 
-struct Capital: Decodable {
+struct Capital: Codable {
     let name: String
     let coordinates: Coordinates?
 }
 
-struct Coordinates: Decodable {
+struct Coordinates: Codable {
     let lat: Double?
     let lng: Double?
 }
 
-struct Flag: Decodable {
+struct Flag: Codable {
     let emoji: String?
     let urlPng: String?
     let urlSvg: String?
@@ -78,18 +78,18 @@ struct Flag: Decodable {
     }
 }
 
-struct Area: Decodable {
+struct Area: Codable {
     let kilometers: Double?
     let miles: Double?
 }
 
-struct Currency: Decodable {
+struct Currency: Codable {
     let code: String
     let name: String
     let symbol: String?
 }
 
-struct Language: Decodable, Comparable {
+struct Language: Codable, Comparable {
     static func < (lhs: Language, rhs: Language) -> Bool {
         lhs.name < rhs.name
     }
