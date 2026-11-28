@@ -4,7 +4,6 @@ import SwiftUI
 struct CategoryPickerBar: View {
     @ObservedObject var countryListModel: CountryListViewModel
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
-    @Environment(\.colorScheme) private var colorScheme
     @ScaledMetric(relativeTo: .subheadline) private var cardHeight: CGFloat = 44
     @State private var showingNewCategory = false
     @State private var categoryName = ""
@@ -38,8 +37,21 @@ struct CategoryPickerBar: View {
             GeometryReader { viewport in
                 let cardWidth = min(200, viewport.size.width * 0.68)
                 let inset = (viewport.size.width - cardWidth) / 2
+                let fade = min(32, inset) / max(viewport.size.width, 1)
 
                 carouselScrollView(cardWidth: cardWidth, center: viewport.size.width / 2, inset: inset)
+                .mask {
+                    LinearGradient(
+                        stops: [
+                            .init(color: .clear, location: 0),
+                            .init(color: .black, location: fade),
+                            .init(color: .black, location: 1 - fade),
+                            .init(color: .clear, location: 1)
+                        ],
+                        startPoint: .leading,
+                        endPoint: .trailing
+                    )
+                }
                 .coordinateSpace(name: "categoryCarousel")
                 .background(Color(uiColor: .systemBackground))
                 .onAppear {
@@ -131,20 +143,18 @@ struct CategoryPickerBar: View {
     }
 
     private func cardColors(rgb: Int32, selected: Bool) -> (fill: Color, text: Color) {
+        guard selected else { return (Color(uiColor: .systemGray5), .primary) }
+
         let red = Double((rgb >> 16) & 255) / 255
         let green = Double((rgb >> 8) & 255) / 255
         let blue = Double(rgb & 255) / 255
-        let opacity = selected ? 1.0 : 0.45
-        let background = colorScheme == .dark ? 0.0 : 1.0
 
-        // Choose readable text against the color as it appears over the carousel background.
         func linearized(_ channel: Double) -> Double {
-            let blended = channel * opacity + background * (1 - opacity)
-            return blended <= 0.04045 ? blended / 12.92 : pow((blended + 0.055) / 1.055, 2.4)
+            channel <= 0.04045 ? channel / 12.92 : pow((channel + 0.055) / 1.055, 2.4)
         }
 
         let luminance = 0.2126 * linearized(red) + 0.7152 * linearized(green) + 0.0722 * linearized(blue)
-        let fill = Color(red: red, green: green, blue: blue).opacity(opacity)
+        let fill = Color(red: red, green: green, blue: blue)
         return (fill, luminance > 0.179 ? .black : .white)
     }
 
