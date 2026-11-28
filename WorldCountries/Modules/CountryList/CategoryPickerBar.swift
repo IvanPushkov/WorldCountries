@@ -39,9 +39,7 @@ struct CategoryPickerBar: View {
                 let cardWidth = min(200, viewport.size.width * 0.68)
                 let inset = (viewport.size.width - cardWidth) / 2
 
-                carouselScrollView(inset: inset) {
-                    carouselCards(cardWidth: cardWidth, center: viewport.size.width / 2)
-                }
+                carouselScrollView(cardWidth: cardWidth, center: viewport.size.width / 2, inset: inset)
                 .coordinateSpace(name: "categoryCarousel")
                 .background(Color(uiColor: .systemBackground))
                 .onAppear {
@@ -61,18 +59,26 @@ struct CategoryPickerBar: View {
     }
 
     @ViewBuilder
-    private func carouselScrollView<Content: View>(inset: CGFloat, @ViewBuilder content: () -> Content) -> some View {
+    private func carouselScrollView(cardWidth: CGFloat, center: CGFloat, inset: CGFloat) -> some View {
+        let cards = carouselCards(cardWidth: cardWidth, center: center)
+        let fallback = ScrollView(.horizontal, showsIndicators: false) {
+            cards.padding(.horizontal, inset)
+        }
+
+        // Scroll targets require the SwiftUI SDK from Xcode 15 or newer.
+        #if compiler(>=5.9)
         if #available(iOS 17, *) {
             ScrollView(.horizontal, showsIndicators: false) {
-                content().scrollTargetLayout()
+                cards.scrollTargetLayout()
             }
             .contentMargins(.horizontal, inset, for: .scrollContent)
             .scrollTargetBehavior(.viewAligned)
         } else {
-            ScrollView(.horizontal, showsIndicators: false) {
-                content().padding(.horizontal, inset)
-            }
+            fallback
         }
+        #else
+        fallback
+        #endif
     }
 
     private func carouselCards(cardWidth: CGFloat, center: CGFloat) -> some View {
