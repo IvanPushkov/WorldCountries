@@ -6,22 +6,9 @@ struct CategoryDetailView: View {
     let collection: CountryCollection
     @ObservedObject var countryListModel: CountryListViewModel
     let openCountry: (String) -> Void
-    @State private var isEditing: Bool
-    @State private var categoryName: String
+    @State private var isEditing = false
+    @State private var categoryName = ""
     @State private var searchText = ""
-
-    init(
-        collection: CountryCollection,
-        countryListModel: CountryListViewModel,
-        editing: Bool,
-        openCountry: @escaping (String) -> Void
-    ) {
-        self.collection = collection
-        self.countryListModel = countryListModel
-        self.openCountry = openCountry
-        _isEditing = State(initialValue: editing)
-        _categoryName = State(initialValue: countryListModel.collectionName(collection) ?? "")
-    }
 
     private var visibleCountries: [CountryCellModel] {
         let selected = countryListModel.countryIDs(in: collection)

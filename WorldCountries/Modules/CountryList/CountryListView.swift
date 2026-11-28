@@ -1,7 +1,7 @@
 import SwiftUI
 
 enum CountryRoute: Hashable {
-    case collection(CountryCollection, editing: Bool)
+    case collection(CountryCollection)
     case country(String, collection: CountryCollection)
 }
 
@@ -23,8 +23,8 @@ struct CountryListView: View {
             .navigationTitle("world_countries")
             .navigationDestination(for: CountryRoute.self) { route in
                 switch route {
-                case .collection(let collection, let editing):
-                    CategoryDetailView(collection: collection, countryListModel: countryListModel, editing: editing) { countryID in
+                case .collection(let collection):
+                    CategoryDetailView(collection: collection, countryListModel: countryListModel) { countryID in
                         path.append(.country(countryID, collection: collection))
                     }
                 case .country(let countryID, let collection):
